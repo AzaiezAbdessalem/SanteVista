@@ -29,16 +29,16 @@ public class Regime implements Serializable {
     private String name;
     @Column(name = "quantityFruit", nullable = false)
     private Integer QuantityFruit;
-    @Column(name = "quantityFruit", nullable = false)
+    @Column(name = "quantityVegetable", nullable = false)
     private Integer QuantityVegetable;
-    @Column(name = "quantityFruit", nullable = false)
+    @Column(name = "quantityProtein", nullable = false)
     private Integer QuantityProtein;
-    @Column(name = "quantityFruit", nullable = false)
+    @Column(name = "quantityCereal", nullable = false)
     private Integer QuantityCereal;
     @Size(min = 2)
     @Column(name = "interdits", nullable = false)
     private String forbidden;
     @Size(min = 2)
-    @Column(name = "interdits", nullable = false)
+    @Column(name = "complement", nullable = false)
     private String complement;
 }
