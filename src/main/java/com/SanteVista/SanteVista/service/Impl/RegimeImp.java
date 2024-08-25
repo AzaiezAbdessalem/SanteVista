@@ -37,6 +37,6 @@ public class RegimeImp implements IRegimeService {
 
     @Override
     public void deleteById(Long id) {
-regimeRepository.findById(id);
+regimeRepository.deleteById(id);
     }
 }
