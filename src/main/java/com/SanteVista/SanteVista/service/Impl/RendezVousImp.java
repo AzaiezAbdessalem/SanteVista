@@ -23,6 +23,11 @@ public class RendezVousImp implements IRendezVousService {
     }
 
     @Override
+    public List<RendezVous> findAllByUserId(String userId) {
+        return rendezVousRepository.findAllByUserId(userId);
+    }
+
+    @Override
     public Optional<RendezVous> findById(Long id) {
         return rendezVousRepository.findById(id);
     }

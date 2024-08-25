@@ -30,6 +30,11 @@ public class RendezVousController {
                 .map(rendezVous -> new ResponseEntity<>(rendezVous, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
+    @GetMapping("/allAppointments/{userId}")
+    public ResponseEntity<List<RendezVous>> getAllRendezVousByUserId(@PathVariable String userId) {
+        List<RendezVous> rendezVous = rendezVousService.findAllByUserId(userId);
+        return new ResponseEntity<>(rendezVous, HttpStatus.OK);
+    }
 
     @PostMapping
     public ResponseEntity<RendezVous> createRendezVous(@RequestBody RendezVous rendezVous) {

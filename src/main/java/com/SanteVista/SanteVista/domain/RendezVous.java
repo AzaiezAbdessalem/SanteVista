@@ -29,4 +29,5 @@ public class RendezVous  implements Serializable {
 
     @Column(name = "horaireFin")
     private LocalTime horaireFin;
+    private String userId;
 }
