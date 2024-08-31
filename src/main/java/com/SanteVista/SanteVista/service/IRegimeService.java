@@ -11,4 +11,10 @@ public interface IRegimeService {
     Regime save(Regime regime);
     Regime update(Regime regime);
     void deleteById(Long id);
+
+
+
+    List<Regime> getRegimesByUserIdAndStatus(String userId, boolean status);
+
+    Regime toggleStatus(Long id);
 }

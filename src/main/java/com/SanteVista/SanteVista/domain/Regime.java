@@ -41,4 +41,6 @@ public class Regime implements Serializable {
     @Size(min = 2)
     @Column(name = "complement", nullable = false)
     private String complement;
+    private String userId;
+    private boolean status=true;
 }

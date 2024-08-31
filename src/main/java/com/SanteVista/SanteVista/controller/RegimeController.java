@@ -55,4 +55,15 @@ public class RegimeController {
         regimeService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+    @GetMapping("/status/{userId}/{status}")
+    public List<Regime> getRegimesByUserId(@PathVariable String userId,@PathVariable boolean status) {
+        return regimeService.getRegimesByUserIdAndStatus(userId,status);
+    }
+
+    @PutMapping("/{id}/toggleStatus")
+    public ResponseEntity<Regime> toggleStatus(@PathVariable Long id) {
+        Regime updatedRegime = regimeService.toggleStatus(id);
+        return ResponseEntity.ok(updatedRegime);
+    }
+
 }
