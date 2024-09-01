@@ -9,6 +9,9 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -30,7 +33,11 @@ public class ActivitePhysique implements Serializable {
     private String link;
     private Integer repetition;
 
-    private String userId;
+    //private String[] userIds;
 
+    @ElementCollection
+    @CollectionTable(name = "activite_physique_user_ids", joinColumns = @JoinColumn(name = "activite_physique_id"))
+    @Column(name = "user_id")
+    private Set<String> userIds = new HashSet<>();
 
 }
