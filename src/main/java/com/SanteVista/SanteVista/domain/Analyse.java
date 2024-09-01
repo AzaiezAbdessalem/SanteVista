@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.Serializable;
 
@@ -24,7 +25,9 @@ public class Analyse implements Serializable {
     private Long id;
     @NotBlank
     @Size(min = 2, max = 50)
-    @Pattern(regexp = "^[a-zA-ZÀ-ÿ'\\s-]+$")
     @Column(name = "name", nullable = false,  length = 50)
     private String name;
+    private String userId;
+    private String   imageUrl;
+
 }
