@@ -38,6 +38,13 @@ public class RendezVousImp implements IRendezVousService {
     }
 
     @Override
+    public RendezVous update(Long id) {
+        RendezVous rendezVous=rendezVousRepository.findById(id).get();
+        rendezVous.setAccepted(true);
+        return rendezVousRepository.save(rendezVous);
+    }
+
+    @Override
     public RendezVous update(RendezVous rendezVous) {
         return rendezVousRepository.save(rendezVous);
     }

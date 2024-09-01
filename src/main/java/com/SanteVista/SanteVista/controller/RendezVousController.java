@@ -41,6 +41,11 @@ public class RendezVousController {
         RendezVous savedRendezVous = rendezVousService.save(rendezVous);
         return new ResponseEntity<>(savedRendezVous, HttpStatus.CREATED);
     }
+    @PostMapping("/{id}")
+    public ResponseEntity<RendezVous> AcceptedRendezVous(@PathVariable Long id) {
+        RendezVous savedRendezVous = rendezVousService.update(id);
+        return new ResponseEntity<>(savedRendezVous, HttpStatus.CREATED);
+    }
 
     @PutMapping("/{id}")
     public ResponseEntity<RendezVous> updateRendezVous(@PathVariable Long id, @RequestBody RendezVous rendezVous) {

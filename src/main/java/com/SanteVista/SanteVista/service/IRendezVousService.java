@@ -11,6 +11,8 @@ public interface IRendezVousService {
 
     Optional<RendezVous> findById(Long id);
     RendezVous save(RendezVous rendezVous);
+    RendezVous update(Long  id);
+
     RendezVous update(RendezVous rendezVous);
     void deleteById(Long id);
 }
