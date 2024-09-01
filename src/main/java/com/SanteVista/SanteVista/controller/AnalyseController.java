@@ -8,7 +8,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -23,18 +25,22 @@ public class AnalyseController {
         return new ResponseEntity<>(analyses, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Analyse> getAnalyseById(@PathVariable Long id) {
-        return analyseService.findById(id)
-                .map(analyse -> new ResponseEntity<>(analyse, HttpStatus.OK))
-                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    @GetMapping("/{userId}")
+    public ResponseEntity<List<Analyse>> getAnalyseById(@PathVariable String userId) {
+        List<Analyse> analyses = analyseService.findAllByUserId(userId);
+
+        return new ResponseEntity<>(analyses, HttpStatus.OK);
+
     }
 
-    @PostMapping
-    public ResponseEntity<Analyse> createAnalyse(@RequestBody Analyse analyse) {
-        Analyse savedAnalyse = analyseService.save(analyse);
+    @PostMapping(consumes = { "multipart/form-data" })
+    public ResponseEntity<Analyse> createAnalyse(
+            @RequestPart("analyse") Analyse analyse,
+            @RequestParam("file") MultipartFile file) throws IOException {
+        Analyse savedAnalyse = analyseService.save(analyse, file);
         return new ResponseEntity<>(savedAnalyse, HttpStatus.CREATED);
     }
+
 
     @PutMapping("/{id}")
     public ResponseEntity<Analyse> updateAnalyse(@PathVariable Long id, @RequestBody Analyse analyse) {
