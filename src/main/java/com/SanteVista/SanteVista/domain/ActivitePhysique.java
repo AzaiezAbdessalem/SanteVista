@@ -25,6 +25,12 @@ public class ActivitePhysique implements Serializable {
     @Pattern(regexp = "^[a-zA-ZÀ-ÿ'\\s-]+$")
     @Column(name = "name", nullable = false,  length = 50)
     private String name;
-    @Column(name = "duree", nullable = false)
+    @Column(name = "duree")
     private Integer duree;
+    private String link;
+    private Integer repetition;
+
+    private String userId;
+
+
 }

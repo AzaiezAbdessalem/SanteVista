@@ -9,5 +9,6 @@ import java.util.Optional;
 
 @Repository
 public interface ActivitePhysiqueRepository extends JpaRepository<ActivitePhysique, Long> {
+    List<ActivitePhysique> findByUserId(String userId);
 
 }
