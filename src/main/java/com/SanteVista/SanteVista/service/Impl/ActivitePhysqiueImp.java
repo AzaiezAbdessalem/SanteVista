@@ -1,7 +1,6 @@
 package com.SanteVista.SanteVista.service.Impl;
 
 import com.SanteVista.SanteVista.domain.ActivitePhysique;
-import com.SanteVista.SanteVista.domain.FicheDeSuivie;
 import com.SanteVista.SanteVista.repository.ActivitePhysiqueRepository;
 import com.SanteVista.SanteVista.service.IAvtivitePhysiqueService;
 import lombok.RequiredArgsConstructor;
@@ -39,5 +38,9 @@ public class ActivitePhysqiueImp implements IAvtivitePhysiqueService {
     @Override
     public void deleteById(Long id) {
         activitePhysiqueRepository.deleteById(id);
+    }
+    @Override
+    public List<ActivitePhysique> getActivitesByUserId(String userId) {
+        return activitePhysiqueRepository.findByUserId(userId);
     }
 }

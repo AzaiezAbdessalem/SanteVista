@@ -54,4 +54,9 @@ public class ActivitePhysiqueController {
         activitePhysiqueService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<List<ActivitePhysique>> getActivitesByUserId(@PathVariable String userId) {
+        List<ActivitePhysique> activites = activitePhysiqueService.getActivitesByUserId(userId);
+        return ResponseEntity.ok(activites);
+    }
 }

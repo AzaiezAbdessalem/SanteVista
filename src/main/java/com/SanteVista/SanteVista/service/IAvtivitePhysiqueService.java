@@ -14,4 +14,6 @@ public interface IAvtivitePhysiqueService {
     ActivitePhysique update(ActivitePhysique activitePhysique);
 
     void deleteById(Long id);
+
+    List<ActivitePhysique> getActivitesByUserId(String userId);
 }

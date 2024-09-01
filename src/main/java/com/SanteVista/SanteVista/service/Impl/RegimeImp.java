@@ -5,6 +5,7 @@ import com.SanteVista.SanteVista.repository.RegimeRepository;
 import com.SanteVista.SanteVista.service.IRegimeService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -38,5 +39,21 @@ public class RegimeImp implements IRegimeService {
     @Override
     public void deleteById(Long id) {
 regimeRepository.deleteById(id);
+    }
+    @Override
+    public List<Regime> getRegimesByUserIdAndStatus(String userId, boolean status) {
+        System.out.println("status"+status);
+        return regimeRepository.findByUserIdAndStatus(userId,status);
+
+    }
+    @Override
+    public Regime toggleStatus(Long id) {
+        Optional<Regime> optionalRegime = regimeRepository.findById(id);
+        if (optionalRegime.isPresent()) {
+            Regime regime = optionalRegime.get();
+            regime.setStatus(false);
+            return regimeRepository.save(regime);
+        }
+        throw new ResourceNotFoundException("Regime not found with id " + id);
     }
 }
